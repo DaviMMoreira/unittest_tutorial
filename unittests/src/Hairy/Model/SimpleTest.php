@@ -22,6 +22,13 @@ class SimpleTest extends PHPUnit_Framework_TestCase
         );
     }
 
+    public function testCompareArrays()
+    {
+        $simpleObject = new Hairy\Model\Simple();
+        $result = $simpleObject->getSomeResultAsArray();
+        $this->assertEquals(array(1,2,4,8,16), $result);
+    }
+
     public function testSqrtException()
     {
         $simpleObject = new Hairy\Model\Simple();

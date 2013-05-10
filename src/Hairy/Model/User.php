@@ -21,7 +21,13 @@ namespace Hairy\Model
         }
         
         /**
-         * Sends out an e-mail to inform the user he received a new message
+         * Sends out an e-mail to inform the user he received a new message.
+         *
+         * Write a test for this method without actually calling the 'send'
+         * method. Insteads, mock the 'send' method to see if get gets the right
+         * input (and to see if the method deals with the response the right
+         * way).
+         *
          * @param string $message the message the user received
          * @return boolean true when successfull, false if failed
          */

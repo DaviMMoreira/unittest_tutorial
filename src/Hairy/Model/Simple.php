@@ -64,5 +64,31 @@ namespace Hairy\Model
             $result = sqrt($input);
             return $result;
         }
+
+        /**
+         * A method that simply returns an array with some values, nothing fancy
+         * @return array
+         */
+        public function getSomeResultAsArray()
+        {
+            return array(1,2,4,8,16);
+        }
+
+        /**
+         * Performs a weird calculation.
+         *
+         * Test this method for 10 different inputs and outputs using a data
+         * provider.
+         *
+         * @param int $a
+         * @param int $b
+         * @param int $c
+         * @return int
+         */
+        public function weirdCalculation($a, $b, $c)
+        {
+            $result = $a * $b + ($b - $c) + $a;
+            return $result;
+        }
     }
 }
