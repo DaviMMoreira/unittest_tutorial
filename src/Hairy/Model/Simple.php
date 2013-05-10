@@ -45,5 +45,24 @@ namespace Hairy\Model
             $mailer = new \Hairy\Lib\Mailer();
             return $mailer;
         }
+
+        /**
+         * Returns the square root for the input. Test if the method throws an
+         * exception when the input is negative.
+         *
+         * @param int $input the input to calculate the square root for
+         * @return float
+         * @throws Exception when input < 0
+         */
+        public function getSquareRoot($input)
+        {
+            if ($input < 0)
+            {
+                throw new \Hairy\Exception\CantCalculateSqrtForNegativeNumbersException();
+            }
+
+            $result = sqrt($input);
+            return $result;
+        }
     }
 }
