@@ -68,6 +68,39 @@ namespace Hairy\Model
             }
             return $this->mailer;
         }
+
+        /**
+         * Returns the number of inbox messages for this user.
+         *
+         * Write a test for this method by having the getDatabaseAdapter object
+         * returning a mock-object.
+         *
+         * @return int the number of messages in the inbox
+         */
+        public function getNumberOfInboxMessages()
+        {
+            $db = $this->getDatabaseAdapter();
+            $query = '
+                SELECT
+                    COUNT(*) as count
+                FROM
+                    inboxmessages
+                WHERE
+                    email = :email
+            ';
+            $result = $db->getRows($query, array('email' => $this->email));
+            $firstRow = array_shift($result);
+            return $firstRow['count'];
+        }
+
+        /**
+         * Returns the database adapter we can use for communicating with the
+         * database.
+         */
+        protected function getDatabaseAdapter()
+        {
+            return new \Hairy\Lib\Dbadapter();
+        }
         
         public function setFirstname($firstname)
         {

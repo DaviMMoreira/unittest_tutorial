@@ -23,4 +23,32 @@ class UserTest extends PHPUnit_Framework_TestCase
             'In normal situations sendMessageReceivedMail() should return boolean true'
         );
     }
+
+    public function testGetNumberOfInboxMessages()
+    {
+        $mockDb = $this->getMock(
+            'Hairy\Lib\Dbadapter',  // class we're mocking
+            array('getRows'),       // methods we want to replace
+            array(),                // constructor arguments
+            '',                     // classname for mock
+            false                   // call original constructor?
+        );
+
+        $dbResult = array(array('count' => 24));
+        $mockDb->expects($this->once())
+               ->method('getRows')
+               ->will($this->returnValue($dbResult));
+
+        $mockUser = $this->getMock(
+            'Hairy\Model\User',
+            array('getDatabaseAdapter'),
+            array('test', 'user', 'testuser@somedomain.com')
+        );
+        $mockUser->expects($this->once())
+            ->method('getDatabaseAdapter')
+            ->will($this->returnValue($mockDb));
+
+        $numberOfMessages = $mockUser->getNumberOfInboxMessages();
+        $this->assertEquals(24, $numberOfMessages, 'Number of inbox messages should be 24');
+    }
 }
