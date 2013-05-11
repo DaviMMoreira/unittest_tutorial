@@ -5,14 +5,17 @@ namespace Hairy\Model
     {
         /**
          * Counts the number of fruits in the database
+         * Rewrite this method so you can write a test for it
+         *
          * @param string $fruit the fruit type we want to count
          */
         public function getNumberOfFruits($fruit)
         {
-            $query = new DatabaseQuery();
-            $query->setTable('fruit');
-            $query->setLike('fruit.name', $fruit);
-            $results = $query->getResults();
+            $db = new \Hairy\Lib\Dbadapter();
+            $results = $db->getRows(
+                'SELECT * FROM fruit WHERE name LIKE :fruit',
+                array('fruit' => $fruit)
+            );
             $count = count($results);
             return $count;
         }
@@ -24,9 +27,8 @@ namespace Hairy\Model
          */
         public function getNumberOfFruitsByColor($color)
         {
-            $query = new DatabaseQuery();
-            $query->setTable('fruit');
-            $results = $query->getResults();
+            $db = new \Hairy\Lib\Dbadapter();
+            $results = $db->getRows('SELECT * FROM fruit');
 
             $counter = 0;
             foreach($results as $fruitObject)
@@ -41,6 +43,10 @@ namespace Hairy\Model
         
         /**
          * Returns the color of fruit in its normal state
+         *
+         * Write a test that calls this method directly without calling the
+         * getNumberOfFruitsByColor() method.
+         *
          * @param string $fruitname
          * @return string the typical color of the fruit
          */

@@ -13,7 +13,7 @@ class FruitTest extends PHPUnit_Framework_TestCase
     public function testGetFruitColor()
     {
         $this->markTestSkipped();
-        
+
         $method = new ReflectionMethod('Hairy\Model\Fruit', '_getFruitColor');
         $method->setAccessible(true);
         $color = $method->invokeArgs(new Hairy\Model\Fruit(), array('banana'));

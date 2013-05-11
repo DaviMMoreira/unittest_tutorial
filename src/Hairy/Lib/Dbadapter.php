@@ -1,24 +1,28 @@
 <?php
 namespace Hairy\Lib
 {
+    use \PDO;
+    use \Hairy\Lib;
+
     class Dbadapter
     {
         /**
-         * @var \PDO
+         * @var PDO
          */
         protected $db;
 
         public function __construct()
         {
-            $dsn = 'mysql:host=localhost;dbname=tektest';
-            $user = '';
-            $password = '';
+            $db = Registry::get('db', 'tek');
+            $dsn = 'mysql:host=localhost;dbname=' . $db;
+            $user = 'tek';
+            $password = 'tek';
             $this->connect($dsn, $user, $password);
         }
 
         protected function connect($dsn, $username, $password)
         {
-            $db = new \PDO($dsn, $username, $password);
+            $db = new PDO($dsn, $username, $password);
             $this->db = $db;
         }
 
@@ -29,9 +33,20 @@ namespace Hairy\Lib
          */
         public function getRows($query, $params=null)
         {
-            $statement = $this->db->prepare($query);
+            $db = $this->db;
+            $statement = $db->prepare($query);
             $statement->execute($params);
             return $statement->fetchAll();
+        }
+
+        /**
+         * Run a query on the database
+         * @param string $query the query to execute
+         * @return PDOStatement
+         */
+        public function query($query)
+        {
+            return $this->db->query($query);
         }
     }
 }
