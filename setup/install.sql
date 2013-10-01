@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 5.5.30, for debian-linux-gnu (i686)
 --
--- Host: localhost    Database: tek
+-- Host: localhost    Database: dbunit
 -- ------------------------------------------------------
 -- Server version	5.5.30-1.1
 

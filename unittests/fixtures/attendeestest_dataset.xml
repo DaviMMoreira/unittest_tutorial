@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+<dataset>
+    <attendees id="1" firstname="John" lastname="Doe" age="16" />
+    <attendees id="2" firstname="Harrie" lastname="Verveer" age="30" />
+    <conference id="1" name="tek13" />
+    <conference id="2" name="dpc13" />
+    <conference id="3" name="phpbnl13" />
+    <conference id="4" name="tek12" />
+    <conference id="5" name="dpc12" />
+    <conference id="6" name="phpbnl12" />
+    <conference_attendee attendee_id="1" conference_id="1" />
+    <conference_attendee attendee_id="2" conference_id="1" />
+    <conference_attendee attendee_id="1" conference_id="2" />
+    <conference_attendee attendee_id="2" conference_id="2" />
+    <conference_attendee attendee_id="1" conference_id="3" />
+    <conference_attendee attendee_id="2" conference_id="4" />
+    <conference_attendee attendee_id="1" conference_id="5" />
+    <conference_attendee attendee_id="2" conference_id="5" />
+</dataset>
