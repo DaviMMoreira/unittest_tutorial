@@ -5,7 +5,7 @@ class SimpleDPTest extends PHPUnit_Framework_TestCase
 
     public static function setUpBeforeClass()
     {
-        self::$simpleObject = new Hairy\Model\Simple();
+        self::$simpleObject = new Hv_Model_Simple();
     }
 
     /**

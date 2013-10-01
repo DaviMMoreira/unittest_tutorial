@@ -5,7 +5,7 @@ class OldschoolUserTest extends PHPUnit_Framework_TestCase
     {
         $mockMailer = new MockMailer();
            
-        $userModel = new Hairy\Model\User('John', 'Doe', 'johndoe@mydomain');
+        $userModel = new Hv_Model_User('John', 'Doe', 'johndoe@mydomain');
         $userModel->setMailer($mockMailer);
         
         $result = $userModel->sendMessageReceivedMail('This is my message');
@@ -16,7 +16,7 @@ class OldschoolUserTest extends PHPUnit_Framework_TestCase
     }
 }
 
-class MockMailer extends \Hairy\Lib\Mailer
+class MockMailer extends Hv_Lib_Mailer
 {
     public function send($recipientEmail, $recipientName, $subject, $body)
     {

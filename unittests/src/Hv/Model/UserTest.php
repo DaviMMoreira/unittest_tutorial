@@ -3,7 +3,7 @@ class UserTest extends PHPUnit_Framework_TestCase
 {
     public function testSendMessageReceivedMail()
     {
-        $mockMailer = $this->getMock('Hairy\Lib\Mailer', array('send'));
+        $mockMailer = $this->getMock('Hv_Lib_Mailer', array('send'));
         $mockMailer->expects($this->once())
                    ->method('send')
                    ->with(
@@ -14,7 +14,7 @@ class UserTest extends PHPUnit_Framework_TestCase
                    )
                    ->will($this->returnValue(true));
         
-        $userModel = new Hairy\Model\User('John', 'Doe', 'johndoe@mydomain');
+        $userModel = new Hv_Model_User('John', 'Doe', 'johndoe@mydomain');
         $userModel->setMailer($mockMailer);
         
         $result = $userModel->sendMessageReceivedMail('This is my message');
@@ -27,7 +27,7 @@ class UserTest extends PHPUnit_Framework_TestCase
     public function testGetNumberOfInboxMessages()
     {
         $mockDb = $this->getMock(
-            'Hairy\Lib\Dbadapter',  // class we're mocking
+            'Hv_Lib_Dbadapter',  // class we're mocking
             array('getRows'),       // methods we want to replace
             array(),                // constructor arguments
             '',                     // classname for mock
@@ -40,7 +40,7 @@ class UserTest extends PHPUnit_Framework_TestCase
                ->will($this->returnValue($dbResult));
 
         $mockUser = $this->getMock(
-            'Hairy\Model\User',
+            'Hv_Model_User',
             array('getDatabaseAdapter'),
             array('test', 'user', 'testuser@somedomain.com')
         );

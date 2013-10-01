@@ -4,6 +4,6 @@
         "phpunit/dbunit": ">=1.2"
     },    
     "autoload": {
-        "psr-0": {"Hairy": "src/"}
+        "psr-0": {"Hv": "src/"}
     }
 }

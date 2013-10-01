@@ -5,7 +5,7 @@ class SimpleAddupTest extends PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $this->ourModel = new Hairy\Model\Simple();
+        $this->ourModel = new Hv_Model_Simple();
     }
 
     public function tearDown()

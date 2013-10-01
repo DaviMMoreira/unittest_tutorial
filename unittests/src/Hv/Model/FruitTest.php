@@ -5,7 +5,7 @@ class FruitTest extends PHPUnit_Framework_TestCase
     {
         $this->markTestSkipped();
         
-        $fruitModel = new Hairy\Model\Fruit();
+        $fruitModel = new Hv_Model_Fruit();
         $counter = $fruitModel->getNumberOfFruits('banana');
         $this->assertEquals(4, $counter, 'We expect 4 bananas');
     }
@@ -14,9 +14,9 @@ class FruitTest extends PHPUnit_Framework_TestCase
     {
         $this->markTestSkipped();
 
-        $method = new ReflectionMethod('Hairy\Model\Fruit', '_getFruitColor');
+        $method = new ReflectionMethod('Hv_Model_Fruit', '_getFruitColor');
         $method->setAccessible(true);
-        $color = $method->invokeArgs(new Hairy\Model\Fruit(), array('banana'));
+        $color = $method->invokeArgs(new Hv_Model_Fruit(), array('banana'));
         $this->assertEquals('yellow', $color, 'We expect bananas to be yellow');
     }
 }
